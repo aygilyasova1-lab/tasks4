@@ -14,11 +14,11 @@ import (
 	"log"
 )
 var (
-	conversionError := errors.New("ошибка преобразования типа")
+	conversionError = errors.New("ошибка преобразования типа")
 
-	divisorZero := errors.New("ошибка деления на 0")
+	divisorZero = errors.New("ошибка деления на 0")
 
-	parseError := errors.New("Ошибка парсинга")
+	parseError = errors.New("Ошибка парсинга")
 )
 // Основные константы, необходимые для расчетов.
 const (

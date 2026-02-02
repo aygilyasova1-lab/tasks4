@@ -13,11 +13,11 @@ import (
 )
 
 var (
-conversionError := errors.New("ошибка преобразования типа")
+conversionError = errors.New("ошибка преобразования типа")
 
-zeroSteps := errors.New("количество шагов равно 0")
+zeroSteps = errors.New("количество шагов равно 0")
 
-parseError := errors.New("ошибка парсинга")
+parseError = errors.New("ошибка парсинга")
 )
 const (
 	// Длина одного шага в метрах
