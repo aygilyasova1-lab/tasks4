@@ -19,6 +19,8 @@ var (
 	divisorZero = errors.New("ошибка деления на 0")
 
 	parseError = errors.New("Ошибка парсинга")
+
+	unknownActiviryError = errors.New("Неизвестный тип тренировки")
 )
 // Основные константы, необходимые для расчетов.
 const (
@@ -97,7 +99,7 @@ func TrainingInfo(data string, weight, height float64) (string, error) {
 			return "", err
 		}
 
-		walkingInfo := fmt.Sprintf("Тип тренировки: %s.\nДлительность: %f ч.\nДистанция: %f км.\nСкорость: %f км/ч\nСожгли калорий:%f\n", 
+		walkingInfo := fmt.Sprintf("Тип тренировки: %s.\nДлительность: %.2f ч.\nДистанция: %.2f км.\nСкорость: %.2f км/ч\nСожгли калорий:%.2f\n", 
 		activityType, activityHours, walkingDistance, walkingSpeed, walkingCalories )
 
 		return walkingInfo, nil
@@ -111,14 +113,14 @@ func TrainingInfo(data string, weight, height float64) (string, error) {
 			return "", err
 		}
 
-		runningInfo := fmt.Sprintf("Тип тренировки: %s.\nДлительность: %f ч.\nДистанция: %f км.\nСкорость: %f км/ч\nСожгли калорий:%f\n", 
+		runningInfo := fmt.Sprintf("Тип тренировки: %s.\nДлительность: %.2f ч.\nДистанция: %.2f км.\nСкорость: %.2f км/ч\nСожгли калорий:%.2f\n", 
 		activityType, activityHours, runningDistance, runningSpeed, runningCalories)
 
 		return runningInfo, nil
 
 	default:
 
-		return "Неизвестный тип тренировки", nil
+		return "", unknownActiviryError
 
 	}
 
