@@ -17,9 +17,11 @@ import (
 var (
 conversionError = errors.New("ошибка преобразования типа")
 
-zeroSteps = errors.New("количество шагов равно 0")
+invalidStepsError = errors.New("некорректное количество шагов")
 
 parseError = errors.New("ошибка парсинга")
+
+invalidDurationError = errors.New("некорректное время")
 )
 const (
 	// Длина одного шага в метрах
@@ -42,15 +44,19 @@ func parsePackage(data string) (int, time.Duration, error) {
 		return 0, 0, conversionError
 		}
 
-	if steps == 0 {
+	if steps <= 0 {
 
-		return 0, 0, zeroSteps
+		return 0, 0, invalidStepsError
 		}
 	duration, err := time.ParseDuration(parts[1])
 	if err != nil {
 
 		return 0, 0, conversionError
-		}	
+		}
+	if duration <= 0 {
+
+		return 0, 0, invalidDurationError
+	}	
 	return steps, duration, nil
 
 	// TODO: реализовать функцию
@@ -65,8 +71,11 @@ func DayActionInfo(data string, weight, height float64) string {
 
 		return ""
 	}
-	if steps < 0 {
+	if weight <= 0 {
 
+		return ""
+	}
+	if height <= 0 {
 		return ""
 	}
 	distance := (stepLength * float64(steps)) / mInKm
