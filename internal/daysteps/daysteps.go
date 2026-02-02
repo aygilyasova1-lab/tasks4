@@ -2,6 +2,8 @@ package daysteps
 
 import (
 	"fmt"
+	
+	"log"
 
 	"time"
 
@@ -11,7 +13,7 @@ import (
 
 	"errors"
 
-	"spentcalories"
+	"github.com/Yandex-Practicum/tracker/internal/spentcalories"
 )
 
 var (
@@ -67,7 +69,7 @@ func DayActionInfo(data string, weight, height float64) string {
 	steps, duration, err := parsePackage(data)
 	if err != nil {
 
-		fmt.Println(err)
+		log.Println(err)
 
 		return ""
 	}
