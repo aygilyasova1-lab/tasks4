@@ -50,7 +50,7 @@ func parseTraining(data string) (int, string, time.Duration, error) {
 	}
 	activityType:= trainingParts[1]
 	
-	return steps, duration, activityType, nil
+	return steps, activityType, duration, nil
 }
 
 func distance(steps int, height float64) float64 {

@@ -10,6 +10,8 @@ import (
 	"strconv"
 
 	"errors"
+
+	"spentcalories"
 )
 
 var (
@@ -67,9 +69,9 @@ func DayActionInfo(data string, weight, height float64) string {
 
 		return ""
 	}
-	distance := (stepLength * steps) / mInKm
+	distance := (stepLength * float64(steps)) / mInKm
 
-	calories, err := WalkingSpentCalories(steps, weight, height, duration)
+	calories, err := spentcalories.WalkingSpentCalories(steps, weight, height, duration)
 	if err != nil {
 		
 		return ""
